@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+
+  - https://github.com/Airific/photo-gallery-service
+  - https://github.com/Airific/review_service
+
 
 ## Table of Contents
 
