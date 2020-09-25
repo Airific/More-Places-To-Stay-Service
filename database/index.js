@@ -12,15 +12,9 @@ db.once('open', () => {
 });
 
 const houseSchema = new mongoose.Schema({
-  Id: Number,
-  Title: String,
-  Description: String,
-  Price: Number,
-  Rating: Number,
-  Reviews: Number,
-  Images: String,
-  Superhost: Boolean,
-
+  id: Number,
+  loc_id: Number,
+  houses: Array,
 });
 
 const House = mongoose.model('House', houseSchema);
@@ -44,24 +38,34 @@ for (let i = 0; i < 100; i++) {
   const randomHouseTitle = Math.floor(Math.random() * houseTitles.length);
   const room = ['2 beds', '3 beds', '4 beds'];
   const randomRoom = Math.floor(Math.random() * room.length);
+
+  const homes = [];
+  for (let j = 0; j < 12; j += 1) {
+    const place = {
+      title: `${houseTitles[randomHouseTitle]} · ${room[randomRoom]}`,
+      description: faker.fake('{{commerce.productAdjective}} place to stay'),
+      price: faker.random.number({
+        min: 100,
+        max: 250,
+      }),
+      rating: faker.random.number({
+        min: 1,
+        max: 5,
+      }),
+      reviews: faker.random.number({
+        min: 1,
+        max: 50,
+      }),
+      images: faker.random.arrayElement(photos),
+      superhost: faker.random.boolean(),
+    };
+    homes.push(place);
+  }
+
   const newHouse = new House({
-    Id: i + 1,
-    Title: `${houseTitles[randomHouseTitle]} · ${room[randomRoom]}`,
-    Description: faker.fake('{{commerce.productAdjective}} place to stay'),
-    Price: faker.random.number({
-      min: 100,
-      max: 250,
-    }),
-    Rating: faker.random.number({
-      min: 1,
-      max: 5,
-    }),
-    Reviews: faker.random.number({
-      min: 1,
-      max: 50,
-    }),
-    Images: faker.random.arrayElement(photos),
-    Superhost: faker.random.boolean(),
+    id: i + 1,
+    loc_id: i + 1,
+    houses: homes,
   });
   house.push(newHouse);
 }
@@ -75,7 +79,7 @@ House.insertMany(house)
   });
 
 function getHouses(id, callback) {
-  House.find({ Id: id })
+  House.find({ id })
     .then((results) => callback(null, results))
     .catch(console.log);
 }
