@@ -1,23 +1,34 @@
 {
   "name": "more-places-to-stay-service",
   "version": "1.0.0",
-  "description": "Airbnb reviews service",
+  "description": "Airbnb more places to stay service",
   "author": "",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "seed": "node database/index.js"
   },
   "dependencies": {
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0",
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "mongoose": "^5.10.6",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "start": "nodemon server/index.js",
+    "seed": "node database/index.js",
     "jest": "^26.4.2",
     "enzyme": "^3.11.0",
     "eslint": "^7.9.0",
@@ -26,6 +37,8 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.2"
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
