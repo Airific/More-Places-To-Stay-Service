@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js",
+    "seed": "node database/index.js"
   },
   "dependencies": {
     "path": "^0.12.7",
