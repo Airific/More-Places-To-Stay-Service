@@ -1,12 +1,11 @@
 const express = require('express');
+const path = require('path');
 const db = require('../database/index.js');
 
 const app = express();
 const port = 3002;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use('/', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/listings/moreplaces/:id', (req, res) => {
   const { id } = req.params;
