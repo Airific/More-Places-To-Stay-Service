@@ -35,13 +35,12 @@ const house = [];
 // eslint-disable-next-line no-plusplus
 for (let i = 0; i < 100; i++) {
   const houseTitles = ['Entire house', 'Private room', 'Entire guest suite', 'Entire guesthouse'];
-  const randomHouseTitle = Math.floor(Math.random() * houseTitles.length);
   const room = ['2 beds', '3 beds', '4 beds'];
 
   const homes = [];
   for (let j = 0; j < 12; j += 1) {
     const place = {
-      title: `${houseTitles[randomHouseTitle]} · ${faker.random.arrayElement(room)}`,
+      title: `${faker.random.arrayElement(houseTitles)} · ${faker.random.arrayElement(room)}`,
       description: faker.fake('{{commerce.productAdjective}} place to stay'),
       price: faker.random.number({
         min: 100,
