@@ -23,7 +23,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        <h2 tabIndex="-1">More places to stay</h2>
+      </div>
     );
   }
 }
