@@ -54,7 +54,7 @@ for (let i = 0; i < 100; i++) {
         min: 1,
         max: 50,
       }),
-      images: faker.random.arrayElement(photos),
+      image: faker.random.arrayElement(photos),
       superhost: faker.random.boolean(),
     };
     homes.push(place);

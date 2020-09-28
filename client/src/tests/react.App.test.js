@@ -3,8 +3,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import App from '../components/App';
 
-describe('<MyApp />', () => {
-  it('allows us to set props', () => {
+describe('More Places to Stay Component', () => {
+  it('allows us to check for certain props', () => {
     // eslint-disable-next-line react/jsx-filename-extension
     const wrapper = mount(<App />);
     expect(wrapper).toContainReact(<h2 tabIndex="-1">More places to stay</h2>);
