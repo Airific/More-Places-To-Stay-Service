@@ -6,6 +6,9 @@ const Image = styled.img`
   height: 200px;
   width: 200px;
 `;
+// const HouseContainer = styled.div`
+//   display: flex;
+// `;
 
 function House({ house }) {
   return (

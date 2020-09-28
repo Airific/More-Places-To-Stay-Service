@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import MoreHouses from './MoreHouses';
+import styled from 'styled-components';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
@@ -24,6 +25,10 @@ class App extends React.Component {
   }
 
   render() {
+    // const Container = styled.div`
+    //   height: 100%;
+    //   width: 100%;
+    // `;
     const { houses } = this.state;
     return (
       <div>
