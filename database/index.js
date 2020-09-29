@@ -8,7 +8,6 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   // we're connected!
-  console.log('Connected to MongoDB');
 });
 
 const houseSchema = new mongoose.Schema({
@@ -40,6 +39,7 @@ for (let i = 0; i < 100; i++) {
   const homes = [];
   for (let j = 0; j < 12; j += 1) {
     const place = {
+      index: j,
       title: `${faker.random.arrayElement(houseTitles)} · ${faker.random.arrayElement(room)}`,
       description: faker.fake('{{commerce.productAdjective}} place to stay'),
       price: faker.random.number({

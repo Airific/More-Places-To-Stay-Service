@@ -4,19 +4,27 @@ import React from 'react';
 import styled from 'styled-components';
 import House from './House';
 
-function MoreHouses({ places }) {
+// transform: translateX(-${(props) => props.translate}px);
+// transform: translateX(-${allHouses})
+
+function MoreHouses({ places, allHouses }) {
   const SliderContent = styled.div`
-  transform: translateX(-${(props) => props.translate}px);
+  position: absolute;
   transition: transform ease-out ${(props) => props.transition}s;
   height: 100%;
   width: ${(props) => props.width}px;
   display: flex;
   `;
-  const mapped = places.houses.map((house, i) => <House house={house} key={i} />);
+  const CardSlider = styled.div`
+  flex: 2;
+  position: relative;
+  `;
   return (
-    <SliderContent>
-      {mapped}
-    </SliderContent>
+    <CardSlider>
+      <SliderContent className="SliderContent">
+        {places.map((house, i) => <House house={house} key={i} />)}
+      </SliderContent>
+    </CardSlider>
   );
 }
 
