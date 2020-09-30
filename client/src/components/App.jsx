@@ -16,9 +16,11 @@ class App extends React.Component {
       currentSet: [],
       translate: 0,
       transition: 0.45,
+      next: false,
     };
     this.getWidth = this.getWidth.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
+    this.prevSlide = this.prevSlide.bind(this);
   }
 
   componentDidMount() {
@@ -47,12 +49,17 @@ class App extends React.Component {
     //   translate: (this.state.activeIndex + 1) * this.getWidth(),
     // });
     const nextProperties = this.state.currentSet[3].index;
+    if (nextProperties === 7) {
+      this.setState({
+        next: true,
+      });
+    }
     this.setState({
       currentSet: this.state.allHouses.slice(nextProperties + 1, nextProperties + 5),
     });
   }
 
-  // prevSlide() {
+  prevSlide() {
   //   if (this.state.activeIndex === 0) {
   //     this.setState({
   //       translate: (this.state.houses.houses.length - 1) * this.getWidth(),
@@ -63,7 +70,16 @@ class App extends React.Component {
   //     activeIndex: this.state.activeIndex - 1,
   //     translate: (this.state.activeIndex - 1) * getWidth(),
   //   });
-  // }
+    const nextProperties = this.state.currentSet[3].index;
+    if (nextProperties === 7) {
+      this.setState({
+        next: true,
+      });
+    }
+    this.setState({
+      currentSet: this.state.allHouses.slice(nextProperties - 5, nextProperties - 1),
+    });
+  }
 
   render() {
     const Container = styled.div`
@@ -78,14 +94,14 @@ class App extends React.Component {
       border: 0 6px;
     `;
     const {
-      translate, transition, allHouses, currentSet,
+      translate, transition, allHouses, currentSet, next,
     } = this.state;
     return (
       <Container className="ContainerApp">
         <h2 tabIndex="-1">More places to stay</h2>
         {allHouses ? <MoreHouses places={currentSet} allHouses={allHouses} translate={translate} transition={transition} width={this.getWidth} /> : null}
-        <Arrow direction="left" handleClick={this.prevSlide} />
-        <Arrow direction="right" handleClick={this.nextSlide} />
+        <Arrow direction="left" handleClick={this.prevSlide} disabled={next} />
+        <Arrow direction="right" handleClick={this.nextSlide} disabled={next} />
       </Container>
     );
   }

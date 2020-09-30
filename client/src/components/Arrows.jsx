@@ -3,15 +3,15 @@ import styled from 'styled-components';
 // import leftArrow from '../img/left-arrow.svg';
 // import rightArrow from '../img/right-arrow.svg';
 
-const Arrow = ({ direction, handleClick }) => {
+const Arrow = ({ direction, handleClick, next }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
   top: 50%;
   ${direction === 'right' ? `right: 25px` : `left: 25px`};
-  height: 50px;
-  width: 50px;
-  justify-content: center;
+  height: 20px;
+  width: 20px;
+  justify-content: flex-end;
   background: white;
   border-radius: 50%;
   cursor: pointer;
@@ -29,10 +29,10 @@ const Arrow = ({ direction, handleClick }) => {
 `;
 
   return (
-    <ArrowContainer onClick={handleClick}>
+    <ArrowContainer onClick={handleClick} disabled={next}>
       {/* {direction === 'right' ? <img src={rightArrow} /> : <img src={leftArrow} />} */}
     </ArrowContainer>
   );
 };
 
-export default Arrow
+export default Arrow;
