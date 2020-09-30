@@ -49,6 +49,7 @@ for (let i = 0; i < 100; i++) {
       rating: faker.random.number({
         min: 1,
         max: 5,
+        precision: 0.01,
       }),
       reviews: faker.random.number({
         min: 1,

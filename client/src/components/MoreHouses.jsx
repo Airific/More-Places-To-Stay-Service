@@ -11,10 +11,13 @@ function MoreHouses({ places, allHouses }) {
   const SliderContent = styled.div`
     position: absolute;
     height: 250px;
-    width: 100%;
+    width: 1000px;
     display: flex;
     border: 1px solid red;
-  `;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    `;
   const CardSlider = styled.div`
     position: relative;
     overflow: hidden:

@@ -67,22 +67,29 @@ class App extends React.Component {
     const Container = styled.div`
       position: relative;
       height: 300px;
-      margin: 0 auto;
+      max-width: 1120px;
+      margin: auto;
       font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
       font-size: 14px;
       font-weight: 600px;
       border: 0 6px;
       border: 1px solid blue;
     `;
+    const Header = styled.div`
+      position: relative;
+      border: 1px solid pink;
+    `;
     const {
       translate, transition, allHouses, currentSet, next,
     } = this.state;
     return (
       <Container className="ContainerApp">
-        <h2 tabIndex="-1">More places to stay</h2>
+        <Header>
+          <h2 tabIndex="-1">More places to stay</h2>
+          <Arrow direction="left" handleClick={this.prevSlide} disabled={next} />
+          <Arrow direction="right" handleClick={this.nextSlide} disabled={next} />
+        </Header>
         {allHouses ? <MoreHouses places={currentSet} allHouses={allHouses} translate={translate} transition={transition} width={this.getWidth} /> : null}
-        <Arrow direction="left" handleClick={this.prevSlide} disabled={next} />
-        <Arrow direction="right" handleClick={this.nextSlide} disabled={next} />
       </Container>
     );
   }

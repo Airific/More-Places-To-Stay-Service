@@ -15,10 +15,10 @@ const Image = styled.img`
   `;
 const HouseContainer = styled.div`
   height: 250px;
-  width: 100%;
+  border: 1px solid black;
+  width: 240px;
   font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
-  margin-right: 20px;
-  margin: 0 0 0 20px;
+  margin-right: 15px;
   display: flex;
   flex-direction: column
 `;
@@ -27,8 +27,13 @@ const Icon = styled.img`
   justify-content: flex-end;
   align self: flex-end;
   margin-top: 2px;
-  margin-left: 2px;
+  margin-left: 210px;
   position: absolute;
+  height: 21px;
+  width: 18px;
+  fill: rgba(0, 0, 0, 0.5);
+  stroke: rgb(255, 255, 255);
+  stroke-width: 2;
 `;
 
 function House({ house }) {
@@ -36,9 +41,13 @@ function House({ house }) {
     <HouseContainer>
       <Icon src={whiteHeart} />
       <Image src={house.image} alt="" />
+      {`${house.rating} (${house.reviews})`}
+      <br />
       {house.title}
       <br />
       {house.description}
+      <br />
+      {`$${house.price} / night`}
     </HouseContainer>
   );
 }

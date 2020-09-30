@@ -6,16 +6,17 @@ const Arrow = ({ direction, handleClick, next }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
-  top: 6%;
-  left: 1200px;
-  ${direction === 'right' ? `right: 1200px` : `left: 1180px`};
+  ${direction === 'right' ? 'right: 100px' : 'right: 125px'};
   height: 20px;
   width: 20px;
-  justify-content: flex-end;
+  top: 32%;
+  justify-content: center;
   background: white;
   border-radius: 50%;
   cursor: pointer;
   align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
   transition: transform ease-in 0.1s;
   &:hover {
     transform: scale(1.1);
