@@ -38,44 +38,24 @@ class App extends React.Component {
   getWidth() { return this.window.innerWidth; }
 
   nextSlide() {
-    // if (activeIndex === this.state.houses.houses.length - 1) {
+    const nextProperties = this.state.currentSet[3].index;
+    // if (nextProperties === 7) {
     //   this.setState({
-    //     translate: 0,
-    //     activeIndex: 0,
+    //     next: true,
     //   });
     // }
-    // this.setState({
-    //   activeIndex: this.state.activeIndex + 1,
-    //   translate: (this.state.activeIndex + 1) * this.getWidth(),
-    // });
-    const nextProperties = this.state.currentSet[3].index;
-    if (nextProperties === 7) {
-      this.setState({
-        next: true,
-      });
-    }
     this.setState({
       currentSet: this.state.allHouses.slice(nextProperties + 1, nextProperties + 5),
     });
   }
 
   prevSlide() {
-  //   if (this.state.activeIndex === 0) {
-  //     this.setState({
-  //       translate: (this.state.houses.houses.length - 1) * this.getWidth(),
-  //       activeIndex: this.state.houses.houses.length - 1,
-  //     });
-  //   }
-  //   this.setState({
-  //     activeIndex: this.state.activeIndex - 1,
-  //     translate: (this.state.activeIndex - 1) * getWidth(),
-  //   });
     const nextProperties = this.state.currentSet[3].index;
-    if (nextProperties === 7) {
-      this.setState({
-        next: true,
-      });
-    }
+    // if (nextProperties === 7) {
+    //   this.setState({
+    //     next: true,
+    //   });
+    // }
     this.setState({
       currentSet: this.state.allHouses.slice(nextProperties - 5, nextProperties - 1),
     });
@@ -85,9 +65,7 @@ class App extends React.Component {
     const Container = styled.div`
       position: relative;
       height: 100vh;
-      width: 100vw;
       margin: 0 auto;
-      overflow: hidden;
       font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
       font-size: 14px;
       font-weight: 600px;

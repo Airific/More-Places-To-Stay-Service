@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import leftArrow from '../img/left-arrow.svg';
-// import rightArrow from '../img/right-arrow.svg';
+import { leftArrow, rightArrow } from '../icons/images';
 
 const Arrow = ({ direction, handleClick, next }) => {
   const ArrowContainer = styled.button`
@@ -21,7 +20,9 @@ const Arrow = ({ direction, handleClick, next }) => {
     transform: scale(1.1);
   }
   img {
-    transform: translateX(${direction === 'left' ? '-2' : '2'}px);
+    align: center;
+    height: 8px;
+    width: 8px;
     &:focus {
       outline: 0;
     }
@@ -30,7 +31,7 @@ const Arrow = ({ direction, handleClick, next }) => {
 
   return (
     <ArrowContainer onClick={handleClick} disabled={next}>
-      {/* {direction === 'right' ? <img src={rightArrow} /> : <img src={leftArrow} />} */}
+      {direction === 'right' ? <img src={rightArrow} alt="" /> : <img src={leftArrow} alt="" />}
     </ArrowContainer>
   );
 };
