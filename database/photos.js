@@ -1,5 +1,6 @@
 module.exports = {
-  photos: ['https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image001.jpg',
+  photos: ['https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image-medium1.jpg', 'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image-medium2.jpg', 'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image-medium3.jpg', 'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image-medium4.jpg'],
+  originalPhotos: ['https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image001.jpg',
     'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image002.jpg',
     'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image003.jpg',
     'https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image004.jpg',

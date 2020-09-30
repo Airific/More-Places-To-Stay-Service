@@ -6,8 +6,9 @@ const Arrow = ({ direction, handleClick, next }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
-  top: 50%;
-  ${direction === 'right' ? `right: 25px` : `left: 25px`};
+  top: 6%;
+  left: 1200px;
+  ${direction === 'right' ? `right: 1200px` : `left: 1180px`};
   height: 20px;
   width: 20px;
   justify-content: flex-end;

@@ -9,15 +9,15 @@ import House from './House';
 
 function MoreHouses({ places, allHouses }) {
   const SliderContent = styled.div`
-  position: absolute;
-  transition: transform ease-out ${(props) => props.transition}s;
-  height: 100%;
-  width: ${(props) => props.width}px;
-  display: flex;
+    position: absolute;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    border: 1px solid red;
   `;
   const CardSlider = styled.div`
-  flex: 2;
-  position: relative;
+    position: relative;
+    overflow: hidden:
   `;
   return (
     <CardSlider>

@@ -39,37 +39,40 @@ class App extends React.Component {
 
   nextSlide() {
     const nextProperties = this.state.currentSet[3].index;
-    // if (nextProperties === 7) {
-    //   this.setState({
-    //     next: true,
-    //   });
-    // }
-    this.setState({
-      currentSet: this.state.allHouses.slice(nextProperties + 1, nextProperties + 5),
-    });
+    if (nextProperties === 11) {
+      this.setState({
+        currentSet: this.state.allHouses.slice(0, 4),
+      });
+    } else {
+      this.setState({
+        currentSet: this.state.allHouses.slice(nextProperties + 1, nextProperties + 5),
+      });
+    }
   }
 
   prevSlide() {
-    const nextProperties = this.state.currentSet[3].index;
-    // if (nextProperties === 7) {
-    //   this.setState({
-    //     next: true,
-    //   });
-    // }
-    this.setState({
-      currentSet: this.state.allHouses.slice(nextProperties - 5, nextProperties - 1),
-    });
+    const nextProperties = this.state.currentSet[0].index;
+    if (nextProperties === 0) {
+      this.setState({
+        currentSet: this.state.allHouses.slice(8, 12),
+      });
+    } else {
+      this.setState({
+        currentSet: this.state.allHouses.slice(nextProperties - 4, nextProperties),
+      });
+    }
   }
 
   render() {
     const Container = styled.div`
       position: relative;
-      height: 100vh;
+      height: 300px;
       margin: 0 auto;
       font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
       font-size: 14px;
       font-weight: 600px;
       border: 0 6px;
+      border: 1px solid blue;
     `;
     const {
       translate, transition, allHouses, currentSet, next,
