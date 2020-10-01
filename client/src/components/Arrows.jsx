@@ -6,9 +6,9 @@ const Arrow = ({ direction, handleClick, next }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
-  ${direction === 'right' ? 'right: 100px' : 'right: 125px'};
-  height: 20px;
-  width: 20px;
+  ${direction === 'right' ? 'right: 135px' : 'right: 175px'};
+  height: 32px;
+  width: 32px;
   top: 32%;
   justify-content: center;
   background: white;
@@ -33,7 +33,7 @@ const Arrow = ({ direction, handleClick, next }) => {
 
   return (
     <ArrowContainer onClick={handleClick} disabled={next}>
-      {direction === 'right' ? <img src={rightArrow} alt="" /> : <img src={leftArrow} alt="" />}
+      {direction === 'right' ? <img className="right" src={rightArrow} alt="" /> : <img className="left" src={leftArrow} alt="" />}
     </ArrowContainer>
   );
 };

@@ -16,7 +16,6 @@ class App extends React.Component {
       currentSet: [],
       translate: 0,
       transition: 0.45,
-      next: false,
     };
     this.getWidth = this.getWidth.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
@@ -72,7 +71,6 @@ class App extends React.Component {
       font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
       font-size: 14px;
       font-weight: 600px;
-      border: 0 6px;
       border: 1px solid blue;
     `;
     const Header = styled.div`
