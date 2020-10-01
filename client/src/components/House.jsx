@@ -35,10 +35,25 @@ const Icon = styled.img`
   stroke: rgb(255, 255, 255);
   stroke-width: 2;
 `;
+const Superhost = styled.div`
+  position: absolute;
+  background: white;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  color: rgb(34, 34, 34);
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  border-radius: 5px;
+  overflow: auto hidden !important;
+  padding: 5px !important;
+  margin-left: 5px !important;
+  margin-top: 5px !important;
+`;
 
 function House({ house }) {
   return (
     <HouseContainer>
+      {house.superhost ? <Superhost>SUPERHOST</Superhost> : null}
       <Icon src={whiteHeart} />
       <Image src={house.image} alt="" />
       {`${house.rating} (${house.reviews})`}
