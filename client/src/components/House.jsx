@@ -23,11 +23,13 @@ const HouseContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 0 25%;
+  font-weight: 400;
+  line-height: 20px !important;
+  font-size: 16px;
 `;
 const Heart = styled.div`
   display: flex;
   justify-content: flex-end;
-  align self: flex-end;
   padding-top: 5px;
   padding-left: 238px;
   position: absolute;
@@ -64,7 +66,7 @@ function House({ house, saveClick, isSaved, refs }) {
     <HouseContainer className="HouseContainer" ref={refs[house.index]}>
       {house.superhost ? <Superhost>SUPERHOST</Superhost> : null}
       <Heart className="Heart" onClick={() => { saveClick(); }}>
-        <svg viewBox="0 0 32 32" focusable="false" style={{ display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+        <svg viewBox="0 0 32 32" focusable="false" style={{ display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible' }}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
       </Heart>
       <Image className="Image" src={house.image} alt="" />
       <Reviews className="Reviews">

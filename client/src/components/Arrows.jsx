@@ -7,10 +7,10 @@ const Arrow = ({ direction, handleClick }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
-  ${direction === 'right' ? 'right: 0px' : 'right: 46px'};
+  ${direction === 'right' ? 'right: 8px' : 'right: 52px'};
   height: 32px;
   width: 32px;
-  top: 32%;
+  top: 24%;
   justify-content: center;
   background: white;
   border-radius: 50%;
@@ -19,13 +19,14 @@ const Arrow = ({ direction, handleClick }) => {
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
   transition: transform ease-in 0.1s;
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
   &:hover {
     transform: scale(1.1);
   }
   img {
     align: center;
-    height: 8px;
-    width: 8px;
+    height: 10px;
+    width: 10px;
     &:focus {
       outline: 0;
     }

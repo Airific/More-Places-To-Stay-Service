@@ -26,15 +26,16 @@ font-size: .5 em !important;
 font-weight 600;
 line-height: 26px;
 `;
-const Title = styled.h2`
+export const Title = styled.h2`
   font-weight: 450;
   font-size: 1.6em;
+  margin-left: 8px;
 `;
 const PageTracker = styled.div`
 display: flex;
 position: absolute;
 justify-content: flex-end; !important;
-right: 95px !important;
+right: 100px !important;
 font-weight: 400 !important;
 font-size: 14px !important;
 line-height: 18px !important;
@@ -122,8 +123,8 @@ class App extends React.Component {
     } = this.state;
     return (
       <Container className="ContainerApp">
-        <Header>
-          <Title tabIndex="-1">More places to stay</Title>
+        <Header className="Header">
+          <Title className="Title" tabIndex="-1">More places to stay</Title>
           <PageTracker>{page} / 3</PageTracker>
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
