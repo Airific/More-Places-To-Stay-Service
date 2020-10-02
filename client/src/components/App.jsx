@@ -83,7 +83,6 @@ class App extends React.Component {
   // transition to next four
   nextSlide() {
     let newPage;
-    console.log('refs: ', this.state.refs);
     if (this.state.page === 3) {
       newPage = 1;
       this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'start' });

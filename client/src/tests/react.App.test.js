@@ -3,7 +3,6 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
 import App from '../components/App';
-import Title from '../components/App';
 
 describe('App tests', () => {
   const testProps = {
