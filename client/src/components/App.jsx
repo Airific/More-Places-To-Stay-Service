@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
@@ -6,20 +7,56 @@ import styled from 'styled-components';
 import MoreHouses from './MoreHouses';
 import Arrow from './Arrows';
 
+const Container = styled.div`
+position: relative;
+height: 320px;
+max-width: 1120px;
+margin: auto;
+font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+font-size: 14px;
+// border: 1px solid blue;
+`;
+const Header = styled.div`
+position: relative;
+display: flex;
+align-items: center;
+font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+// border: 1px solid pink;
+font-size: .5 em !important;
+font-weight 600;
+line-height: 26px;
+`;
+export const Title = styled.h2`
+  font-weight: 450;
+  font-size: 1.6em;
+  margin-left: 8px;
+`;
+const PageTracker = styled.div`
+display: flex;
+position: absolute;
+justify-content: flex-end; !important;
+right: 100px !important;
+font-weight: 400 !important;
+font-size: 14px !important;
+line-height: 18px !important;
+font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+`;
+
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 0,
       allHouses: undefined,
-      currentSet: [],
-      translate: 0,
-      transition: 0.45,
+      isSaved: false,
+      refs: {
+        0: React.createRef(), 1: React.createRef(), 2: React.createRef(), 3: React.createRef(), 4: React.createRef(), 5: React.createRef(), 6: React.createRef(), 7: React.createRef(), 8: React.createRef(), 9: React.createRef(), 10: React.createRef(), 11: React.createRef(),
+      },
+      page: 1,
     };
-    this.getWidth = this.getWidth.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
+    this.saveClick = this.saveClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,60 +71,64 @@ class App extends React.Component {
       .catch(console.log);
   }
 
-  getWidth() { return this.window.innerWidth; }
-
-  nextSlide() {
-    const nextProperties = this.state.currentSet[3].index;
-    if (nextProperties === 11) {
-      this.setState({
-        currentSet: this.state.allHouses.slice(0, 4),
-      });
-    } else {
-      this.setState({
-        currentSet: this.state.allHouses.slice(nextProperties + 1, nextProperties + 5),
-      });
+  saveClick() {
+    const { isSaved } = this.state;
+    if (isSaved) {
+      this.setState((state) => ({
+        isSaved: !state.isSaved,
+      }));
     }
   }
 
-  prevSlide() {
-    const nextProperties = this.state.currentSet[0].index;
-    if (nextProperties === 0) {
-      this.setState({
-        currentSet: this.state.allHouses.slice(8, 12),
-      });
+  // transition to next four
+  nextSlide() {
+    let newPage;
+    if (this.state.page === 3) {
+      newPage = 1;
+      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (this.state.page === 2) {
+      newPage = 3;
+      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      this.setState({
-        currentSet: this.state.allHouses.slice(nextProperties - 4, nextProperties),
-      });
+      newPage = 2;
+      this.state.refs[7].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    this.setState({
+      page: newPage,
+    });
+  }
+
+  // transition to prev four
+  prevSlide() {
+    let newPage;
+    if (this.state.page === 1) {
+      newPage = 3;
+      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (this.state.page === 2) {
+      newPage = 1;
+      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      newPage = 2;
+      this.state.refs[4].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    this.setState({
+      page: newPage,
+    });
   }
 
   render() {
-    const Container = styled.div`
-      position: relative;
-      height: 300px;
-      max-width: 1120px;
-      margin: auto;
-      font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
-      font-size: 14px;
-      font-weight: 600px;
-      border: 1px solid blue;
-    `;
-    const Header = styled.div`
-      position: relative;
-      border: 1px solid pink;
-    `;
     const {
-      translate, transition, allHouses, currentSet, next,
+      allHouses, isSaved, refs, page,
     } = this.state;
     return (
       <Container className="ContainerApp">
-        <Header>
-          <h2 tabIndex="-1">More places to stay</h2>
-          <Arrow direction="left" handleClick={this.prevSlide} disabled={next} />
-          <Arrow direction="right" handleClick={this.nextSlide} disabled={next} />
+        <Header className="Header">
+          <Title className="Title" tabIndex="-1">More places to stay</Title>
+          <PageTracker>{page} / 3</PageTracker>
+          <Arrow direction="left" handleClick={this.prevSlide} />
+          <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        {allHouses ? <MoreHouses places={currentSet} allHouses={allHouses} translate={translate} transition={transition} width={this.getWidth} /> : null}
+        {allHouses ? <MoreHouses places={allHouses} saveClick={this.saveClick} refs={refs} isSaved={isSaved} /> : null}
       </Container>
     );
   }
