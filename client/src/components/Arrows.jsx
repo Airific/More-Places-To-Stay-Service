@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { leftArrow, rightArrow } from '../icons/images';
 
-const Arrow = ({ direction, handleClick, next }) => {
+const Arrow = ({ direction, handleClick }) => {
   const ArrowContainer = styled.button`
   display: flex;
   position: absolute;
-  ${direction === 'right' ? 'right: 135px' : 'right: 175px'};
+  ${direction === 'right' ? 'right: 0px' : 'right: 46px'};
   height: 32px;
   width: 32px;
   top: 32%;
@@ -32,7 +33,7 @@ const Arrow = ({ direction, handleClick, next }) => {
 `;
 
   return (
-    <ArrowContainer onClick={handleClick} disabled={next}>
+    <ArrowContainer onClick={handleClick}>
       {direction === 'right' ? <img className="right" src={rightArrow} alt="" /> : <img className="left" src={leftArrow} alt="" />}
     </ArrowContainer>
   );
