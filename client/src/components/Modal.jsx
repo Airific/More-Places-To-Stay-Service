@@ -16,13 +16,22 @@ const OuterContainer = styled.div`
   justify-content: center !important;
 `;
 
+const DarkBackground = styled.div`
+  z-index: 5 !important;
+  background: black;
+  opacity: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+`;
+
 const ModalContainer = styled.div`
   position: absolute;
   display: flex !important;
   justify-content: center !important;
   flex: 0 0 auto !important;
   align-items: center !important;
-  background: rgb(255, 255, 255) !important;
+  background: rgb(255, 255, 255, 1) !important;
   box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px !important;
   z-index: 10;
   position: relative !important;
@@ -33,9 +42,7 @@ const ModalContainer = styled.div`
   border-top-right-radius: 12px !important;
   border-bottom-left-radius: 12px !important;
   border-bottom-right-radius: 12px !important;
-  // animation-duration: 400ms !important;
-  // animation-iteration-count: 1 !important;
-  // animation-fill-mode: both !important;
+  opacity: 100%;
 `;
 const Top = styled.div`
   display: flex !important;
@@ -62,44 +69,44 @@ const Middle = styled.div`
   font-weight: 800 !important;
 `;
 const Bottom = styled.div`
-display: flex !important;
-flex: 0 0 auto !important;
-align-items: center !important;
-justify-content: space-between !important;
-border-bottom: 1px solid rgb(235, 235, 235) !important;
-padding: 0px 24px !important;
-color: rgb(34, 34, 34) !important;
-font-size: 16px !important;
-line-height: 20px !important;
-font-weight: 800 !important;
-min-height: 64px;
-text-decoration: underline;
-cursor: pointer;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
+  padding: 0px 24px !important;
+  color: rgb(34, 34, 34) !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-weight: 800 !important;
+  min-height: 64px;
+  text-decoration: underline;
+  cursor: pointer;
 `;
 const CloseButton = styled.button`
-appearance: none !important;
-display: inline-block !important;
-border-radius: 50% !important;
-border: none !important;
-outline: none !important;
-color: rgb(34, 34, 34) !important;
-cursor: pointer !important;
-touch-action: manipulation !important;
-position: absolute !important;
-left: 20px;
-background: transparent !important;
+  appearance: none !important;
+  display: inline-block !important;
+  border-radius: 50% !important;
+  border: none !important;
+  outline: none !important;
+  color: rgb(34, 34, 34) !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  position: absolute !important;
+  left: 20px;
+  background: transparent !important;
 `;
 const SaveButton = styled.button`
-appearance: none !important;
-display: inline-block !important;
-border-radius: 50% !important;
-border: none !important;
-outline: none !important;
-color: rgb(34, 34, 34) !important;
-cursor: pointer !important;
-touch-action: manipulation !important;
-position: absolute !important;
-background: transparent !important;
+  appearance: none !important;
+  display: inline-block !important;
+  border-radius: 50% !important;
+  border: none !important;
+  outline: none !important;
+  color: rgb(34, 34, 34) !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  position: absolute !important;
+  background: transparent !important;
 `;
 const Modal = (props) => {
   const {
@@ -117,7 +124,8 @@ const Modal = (props) => {
   //   return null;
   // }
   return (
-    <OuterContainer>
+    <OuterContainer className="OuterContainer">
+      <DarkBackground className="DarkBackground" />
       <ModalContainer className="ModalContainer">
         <Top className="Top">
           <CloseButton className="CloseButton" onClick={() => { handleShowModal(); }}>X</CloseButton>
