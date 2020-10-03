@@ -9,7 +9,6 @@ const OuterContainer = styled.div`
   right: 0px !important;
   bottom: 0px !important;
   left: 0px !important;
-  padding-top: 12px !important;
   display: flex !important;
   flex-direction: row !important;
   align-items: center!important;
@@ -43,6 +42,19 @@ const ModalContainer = styled.div`
   border-bottom-left-radius: 12px !important;
   border-bottom-right-radius: 12px !important;
   opacity: 100%;
+
+  @keyframes slidein {
+    from {
+      margin-top: 100%;
+      heigth: 100%;
+
+    }
+    to {
+      margin-top: 0%;
+      height: 100%;
+      opacity: 100%;
+    }
+  }
 `;
 const Top = styled.div`
   display: flex !important;
@@ -53,7 +65,7 @@ const Top = styled.div`
   color: rgb(34, 34, 34) !important;
   font-size: 16px !important;
   line-height: 20px !important;
-  font-weight: 800 !important;
+  font-weight: 600 !important;
   min-height: 64px;
   width: 100%
 `;
@@ -76,9 +88,10 @@ const Bottom = styled.div`
   border-bottom: 1px solid rgb(235, 235, 235) !important;
   padding: 0px 24px !important;
   color: rgb(34, 34, 34) !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
   font-size: 16px !important;
+  font-weight: 600 !important;
   line-height: 20px !important;
-  font-weight: 800 !important;
   min-height: 64px;
   text-decoration: underline;
   cursor: pointer;
@@ -107,6 +120,23 @@ const SaveButton = styled.button`
   touch-action: manipulation !important;
   position: absolute !important;
   background: transparent !important;
+  font-weight: 600 !important;
+  left: 20px;
+`;
+const AnyTime = styled.div`
+display: inline-block !important;
+color: rgb(34, 34, 34) !important;
+touch-action: manipulation !important;
+position: relative !important;
+background: transparent !important;
+font-weight: 600 !important;
+top: -26px;
+left: -234px;
+margin-bottom: 4px !important;
+font-size: 12px !important;
+line-height: 16px !important;
+font-weight: 400 !important;
+color: rgb(113, 113, 113) !important;
 `;
 const Modal = (props) => {
   const {
@@ -132,7 +162,12 @@ const Modal = (props) => {
           Save to a list
         </Top>
         <Middle Middle="Middle">
-          <SaveButton className="SaveButton" onClick={() => { toggleSave(); handleShowModal(); }}> Test Example List</SaveButton>
+          <AnyTime>
+            Any time
+          </AnyTime>
+          <SaveButton className="SaveButton" onClick={() => { toggleSave(); handleShowModal(); }}>
+            Vacation spots
+          </SaveButton>
         </Middle>
         <Bottom className="Bottom">Create a list</Bottom>
       </ModalContainer>
