@@ -6,6 +6,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import MoreHouses from './MoreHouses';
 import Arrow from './Arrows';
+import Modal from './Modal';
 
 const Container = styled.div`
 position: relative;
@@ -48,15 +49,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       allHouses: undefined,
-      isSaved: false,
       refs: {
         0: React.createRef(), 1: React.createRef(), 2: React.createRef(), 3: React.createRef(), 4: React.createRef(), 5: React.createRef(), 6: React.createRef(), 7: React.createRef(), 8: React.createRef(), 9: React.createRef(), 10: React.createRef(), 11: React.createRef(),
       },
       page: 1,
+      showModal: false,
     };
     this.nextSlide = this.nextSlide.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
     this.saveClick = this.saveClick.bind(this);
+    this.handleShowModal = this.handleShowModal.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +80,14 @@ class App extends React.Component {
         isSaved: !state.isSaved,
       }));
     }
+  }
+
+  handleShowModal(event) {
+    // console.log('target:', event.target.getAttribute('class'));
+    this.setState((state) => ({
+      showModal: true,
+      isSaved: !state.isSaved,
+    }));
   }
 
   // transition to next four
@@ -118,7 +128,7 @@ class App extends React.Component {
 
   render() {
     const {
-      allHouses, isSaved, refs, page,
+      allHouses, refs, page, showModal,
     } = this.state;
     return (
       <Container className="ContainerApp">
@@ -128,7 +138,8 @@ class App extends React.Component {
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        {allHouses ? <MoreHouses places={allHouses} saveClick={this.saveClick} refs={refs} isSaved={isSaved} /> : null}
+        <Modal showModal={showModal} />
+        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} saveClick={this.saveClick} refs={refs} /> : <h1>Loading</h1>}
       </Container>
     );
   }

@@ -20,12 +20,12 @@ position: relative;
 `;
 
 function MoreHouses({
-  places, saveClick, isSaved, refs,
+  places, saveClick, isSaved, refs, handleShowModal,
 }) {
   return (
     <CardSlider>
       <SliderContent className="SliderContent">
-        {places.map((house) => <House house={house} key={house.index} refs={refs} saveClick={saveClick} isSaved={isSaved} />)}
+        {places.map((house) => <House handleShowModal={handleShowModal} house={house} key={house.index} refs={refs} />)}
       </SliderContent>
     </CardSlider>
   );
