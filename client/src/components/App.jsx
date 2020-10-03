@@ -57,8 +57,6 @@ class App extends React.Component {
     };
     this.nextSlide = this.nextSlide.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
-    this.saveClick = this.saveClick.bind(this);
-    this.handleShowModal = this.handleShowModal.bind(this);
   }
 
   componentDidMount() {
@@ -71,23 +69,6 @@ class App extends React.Component {
         });
       })
       .catch(console.log);
-  }
-
-  saveClick() {
-    const { isSaved } = this.state;
-    if (isSaved) {
-      this.setState((state) => ({
-        isSaved: !state.isSaved,
-      }));
-    }
-  }
-
-  handleShowModal(event) {
-    // console.log('target:', event.target.getAttribute('class'));
-    this.setState((state) => ({
-      showModal: !state.showModal,
-      isSaved: !state.isSaved,
-    }));
   }
 
   // transition to next four
@@ -128,7 +109,7 @@ class App extends React.Component {
 
   render() {
     const {
-      allHouses, refs, page, showModal, isSaved,
+      allHouses, refs, page, isSaved,
     } = this.state;
     return (
       <Container className="ContainerApp">
@@ -138,8 +119,8 @@ class App extends React.Component {
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        {showModal ? <Modal handleShowModal={this.handleShowModal} showModal={showModal} /> : null}
-        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} isSaved={isSaved} saveClick={this.saveClick} refs={refs} /> : <h1>Loading</h1>}
+        {/* {showModal ? <Modal handleShowModal={this.handleShowModal} showModal={showModal} /> : null} */}
+        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} refs={refs} /> : <h1>Loading</h1>}
       </Container>
     );
   }

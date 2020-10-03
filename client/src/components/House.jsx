@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 // import { whiteHeart, redheart } from '../icons/images';
 
 const Image = styled.img`
@@ -83,28 +85,39 @@ class House extends React.Component {
     super(props);
     this.state = {
       isSaved: false,
+      showModal: false,
     };
     this.toggleSave = this.toggleSave.bind(this);
+    this.handleShowModal = this.handleShowModal.bind(this);
   }
 
-  toggleSave(event) {
+  toggleSave() {
     this.setState((state) => ({
       isSaved: !state.isSaved,
     }));
   }
 
+  handleShowModal() {
+    // console.log('target:', event.target.getAttribute('class'));
+    this.setState((state) => ({
+      showModal: !state.showModal,
+      // isSaved: !state.isSaved,
+    }));
+  }
+
   render() {
-    const { house, refs, handleShowModal } = this.props;
-    const { isSaved } = this.state;
+    const { house, refs } = this.props;
+    const { isSaved, showModal } = this.state;
     return (
       <HouseContainer className="HouseContainer" ref={refs[house.index]}>
+        {showModal ? <Modal handleShowModal={this.handleShowModal} showModal={showModal} toggleSave={this.toggleSave} /> : null}
         {house.superhost ? <Superhost>SUPERHOST</Superhost> : null}
         {isSaved ? (
-          <Heart className="Heart" onClick={(event) => { handleShowModal(event); this.toggleSave(); }}>
+          <Heart className="Heart" onClick={() => { this.toggleSave(); }}>
             <svg viewBox="0 0 32 32" focusable="false" style={{ display: 'block', fill: 'rgb(255, 56, 92)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible' }}><path className={house.index} d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
           </Heart>
         ) : (
-          <Heart className="Heart" onClick={(event) => { handleShowModal(event); this.toggleSave(); }}>
+          <Heart className="Heart" onClick={() => { this.handleShowModal(); }}>
             <svg viewBox="0 0 32 32" focusable="false" style={{ display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible' }}><path className={house.index} d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
           </Heart>
         )}

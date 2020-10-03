@@ -41,15 +41,25 @@ const Top = styled.div`
   display: flex !important;
   flex: 0 0 auto !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   border-bottom: 1px solid rgb(235, 235, 235) !important;
-  padding: 0px 24px !important;
   color: rgb(34, 34, 34) !important;
   font-size: 16px !important;
   line-height: 20px !important;
   font-weight: 800 !important;
   min-height: 64px;
-  width:
+  width: 100%
+`;
+const Middle = styled.div`
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
+  height: 120px;
+  width: 100%;
+  font-size: 16px !important;
+  font-weight: 800 !important;
 `;
 const Bottom = styled.div`
 display: flex !important;
@@ -75,12 +85,25 @@ outline: none !important;
 color: rgb(34, 34, 34) !important;
 cursor: pointer !important;
 touch-action: manipulation !important;
-position: relative !important;
+position: absolute !important;
+left: 20px;
+background: transparent !important;
+`;
+const SaveButton = styled.button`
+appearance: none !important;
+display: inline-block !important;
+border-radius: 50% !important;
+border: none !important;
+outline: none !important;
+color: rgb(34, 34, 34) !important;
+cursor: pointer !important;
+touch-action: manipulation !important;
+position: absolute !important;
 background: transparent !important;
 `;
 const Modal = (props) => {
   const {
-    handleShowModal, isModalClicked, showModal,
+    handleShowModal, showModal, toggleSave,
   } = props;
 
   // let fade = '';
@@ -96,11 +119,14 @@ const Modal = (props) => {
   return (
     <OuterContainer>
       <ModalContainer className="ModalContainer">
-        <Top>
-          <CloseButton onClick={handleShowModal}>X</CloseButton>
+        <Top className="Top">
+          <CloseButton className="CloseButton" onClick={() => { handleShowModal(); }}>X</CloseButton>
           Save to a list
         </Top>
-        <Bottom>Create a list</Bottom>
+        <Middle Middle="Middle">
+          <SaveButton className="SaveButton" onClick={() => { toggleSave(); handleShowModal(); }}> Test Example List</SaveButton>
+        </Middle>
+        <Bottom className="Bottom">Create a list</Bottom>
       </ModalContainer>
     </OuterContainer>
   );
