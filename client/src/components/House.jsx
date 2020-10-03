@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { whiteHeart, redheart } from '../icons/images';
+// import { whiteHeart, redheart } from '../icons/images';
 
 const Image = styled.img`
   height: 176px;
@@ -43,6 +43,7 @@ const Heart = styled.button`
   background: transparent;
   border: none !important;
   outline: none;
+  cursor: pointer;
 `;
 const Superhost = styled.div`
   position: absolute;
@@ -121,7 +122,7 @@ class House extends React.Component {
         <div>
           <Price className="Price">
             $
-          {house.price}
+            {house.price}
           </Price>
           <span> / night</span>
         </div>

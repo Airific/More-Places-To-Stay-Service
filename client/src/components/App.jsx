@@ -85,7 +85,7 @@ class App extends React.Component {
   handleShowModal(event) {
     // console.log('target:', event.target.getAttribute('class'));
     this.setState((state) => ({
-      showModal: true,
+      showModal: !state.showModal,
       isSaved: !state.isSaved,
     }));
   }
@@ -128,7 +128,7 @@ class App extends React.Component {
 
   render() {
     const {
-      allHouses, refs, page, showModal,
+      allHouses, refs, page, showModal, isSaved,
     } = this.state;
     return (
       <Container className="ContainerApp">
@@ -138,8 +138,8 @@ class App extends React.Component {
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        <Modal showModal={showModal} />
-        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} saveClick={this.saveClick} refs={refs} /> : <h1>Loading</h1>}
+        {showModal ? <Modal handleShowModal={this.handleShowModal} showModal={showModal} /> : null}
+        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} isSaved={isSaved} saveClick={this.saveClick} refs={refs} /> : <h1>Loading</h1>}
       </Container>
     );
   }
