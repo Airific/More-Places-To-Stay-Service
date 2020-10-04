@@ -54,9 +54,12 @@ class App extends React.Component {
       },
       page: 1,
       showModal: false,
+      placesCount: 0,
     };
     this.nextSlide = this.nextSlide.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
+    this.decrementCount = this.decrementCount.bind(this);
   }
 
   componentDidMount() {
@@ -107,9 +110,23 @@ class App extends React.Component {
     });
   }
 
+  // increment count for stays
+  incrementCount() {
+    this.setState((state) => ({
+      placesCount: state.placesCount + 1,
+    }));
+  }
+
+  // decrement count when clicking red heart
+  decrementCount() {
+    this.setState((state) => ({
+      placesCount: state.placesCount - 1,
+    }));
+  }
+
   render() {
     const {
-      allHouses, refs, page, isSaved,
+      allHouses, refs, page, placesCount,
     } = this.state;
     return (
       <Container className="ContainerApp">
@@ -119,8 +136,7 @@ class App extends React.Component {
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        {/* {showModal ? <Modal handleShowModal={this.handleShowModal} showModal={showModal} /> : null} */}
-        {allHouses ? <MoreHouses handleShowModal={this.handleShowModal} places={allHouses} refs={refs} /> : <h1>Loading</h1>}
+        {allHouses ? <MoreHouses incrementCount={this.incrementCount} decrementCount={this.decrementCount} places={allHouses} refs={refs} placesCount={placesCount} /> : <h1>Loading</h1>}
       </Container>
     );
   }

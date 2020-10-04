@@ -43,8 +43,8 @@ for (let i = 0; i < 100; i++) {
       title: `${faker.random.arrayElement(houseTitles)} · ${faker.random.arrayElement(room)}`,
       description: faker.fake('{{commerce.productAdjective}} place to stay'),
       price: faker.random.number({
-        min: 100,
-        max: 250,
+        min: 200,
+        max: 400,
       }),
       rating: faker.random.number({
         min: 1,
@@ -55,7 +55,8 @@ for (let i = 0; i < 100; i++) {
         min: 1,
         max: 50,
       }),
-      image: faker.random.arrayElement(photos),
+      // image: faker.random.arrayElement(photos),
+      image: photos[j],
       superhost: faker.random.boolean(),
     };
     homes.push(place);

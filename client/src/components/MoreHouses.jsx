@@ -22,12 +22,12 @@ overflow: hidden;
 `;
 
 function MoreHouses({
-  places, refs, handleShowModal,
+  places, refs, placesCount, incrementCount, decrementCount,
 }) {
   return (
     <CardSlider className="CardSlider">
       <SliderContent className="SliderContent">
-        {places.map((house) => <House handleShowModal={handleShowModal} house={house} key={house.index} refs={refs} />)}
+        {places.map((house) => <House house={house} incrementCount={incrementCount} decrementCount={decrementCount} placesCount={placesCount} key={house.index} refs={refs} />)}
       </SliderContent>
     </CardSlider>
   );

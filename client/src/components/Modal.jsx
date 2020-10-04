@@ -131,7 +131,22 @@ position: relative !important;
 background: transparent !important;
 font-weight: 600 !important;
 top: -26px;
-left: -234px;
+left: -217px;
+margin-bottom: 4px !important;
+font-size: 12px !important;
+line-height: 16px !important;
+font-weight: 400 !important;
+color: rgb(113, 113, 113) !important;
+`;
+const PlacesCount = styled.div`
+display: inline-block !important;
+color: rgb(34, 34, 34) !important;
+touch-action: manipulation !important;
+position: relative !important;
+background: transparent !important;
+font-weight: 600 !important;
+top: 30px;
+left: -264px;
 margin-bottom: 4px !important;
 font-size: 12px !important;
 line-height: 16px !important;
@@ -140,7 +155,7 @@ color: rgb(113, 113, 113) !important;
 `;
 const Modal = (props) => {
   const {
-    handleShowModal, showModal, toggleSave,
+    handleShowModal, showModal, toggleSave, placesCount, incrementCount,
   } = props;
 
   // let fade = '';
@@ -165,9 +180,10 @@ const Modal = (props) => {
           <AnyTime>
             Any time
           </AnyTime>
-          <SaveButton className="SaveButton" onClick={() => { toggleSave(); handleShowModal(); }}>
+          <SaveButton className="SaveButton" onClick={(event) => { toggleSave(); handleShowModal(event); incrementCount(); }}>
             Vacation spots
           </SaveButton>
+          <PlacesCount>{placesCount} stay</PlacesCount>
         </Middle>
         <Bottom className="Bottom">Create a list</Bottom>
       </ModalContainer>
