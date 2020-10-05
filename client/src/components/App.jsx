@@ -6,7 +6,6 @@ import axios from 'axios';
 import styled from 'styled-components';
 import MoreHouses from './MoreHouses';
 import Arrow from './Arrows';
-import Modal from './Modal';
 
 const Container = styled.div`
 position: relative;

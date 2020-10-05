@@ -158,16 +158,6 @@ const Modal = (props) => {
     handleShowModal, showModal, toggleSave, placesCount, incrementCount,
   } = props;
 
-  // let fade = '';
-  // if (showModal && isModalClicked) {
-  //   fade = 'slideIn';
-  // } else if (!showModal && isModalClicked) {
-  //   fade = 'slideOut';
-  // }
-
-  // if (!showModal) {
-  //   return null;
-  // }
   return (
     <OuterContainer className="OuterContainer">
       <DarkBackground className="DarkBackground" />
@@ -183,7 +173,7 @@ const Modal = (props) => {
           <SaveButton className="SaveButton" onClick={(event) => { toggleSave(); handleShowModal(event); incrementCount(); }}>
             Vacation spots
           </SaveButton>
-          <PlacesCount>{placesCount} stay</PlacesCount>
+          <PlacesCount>{placesCount} stays</PlacesCount>
         </Middle>
         <Bottom className="Bottom">Create a list</Bottom>
       </ModalContainer>

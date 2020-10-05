@@ -4,8 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import House from './House';
 
-// transform: translateX(-${(props) => props.translate}px);
-// transform: translateX(-${allHouses})
 const SliderContent = styled.div`
 position: absolute;
 height: 260px;

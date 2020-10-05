@@ -4,7 +4,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-// import { whiteHeart, redheart } from '../icons/images';
 
 const Image = styled.img`
   height: 176px;
