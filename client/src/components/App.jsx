@@ -62,7 +62,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/listings/moreplaces/1')
+    const endpoint = window.location.pathname;
+    axios.get(`/listings/moreplaces${endpoint}`)
       .then((res) => {
         console.log('res.data[0].houses: ', res.data[0].houses);
         this.setState({
