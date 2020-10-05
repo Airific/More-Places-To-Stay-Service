@@ -46,9 +46,9 @@ describe('App tests', () => {
   //   nextButton.find('.left').simulate('click');
   //   expect(wrapper.state().page).toBe(3);
   // });
-  it('should know that no house comes in saved by default', () => {
+  it('should know to not show modal by default', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state('isSaved')).toEqual(false);
+    expect(wrapper.state('showModal')).toEqual(false);
   });
   it('does not render an empty component', () => {
     const wrapper = shallow(<App />);

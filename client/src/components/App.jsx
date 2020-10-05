@@ -48,15 +48,17 @@ class App extends React.Component {
     super(props);
     this.state = {
       allHouses: undefined,
-      isSaved: false,
       refs: {
         0: React.createRef(), 1: React.createRef(), 2: React.createRef(), 3: React.createRef(), 4: React.createRef(), 5: React.createRef(), 6: React.createRef(), 7: React.createRef(), 8: React.createRef(), 9: React.createRef(), 10: React.createRef(), 11: React.createRef(),
       },
       page: 1,
+      showModal: false,
+      placesCount: 0,
     };
     this.nextSlide = this.nextSlide.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
-    this.saveClick = this.saveClick.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
+    this.decrementCount = this.decrementCount.bind(this);
   }
 
   componentDidMount() {
@@ -69,15 +71,6 @@ class App extends React.Component {
         });
       })
       .catch(console.log);
-  }
-
-  saveClick() {
-    const { isSaved } = this.state;
-    if (isSaved) {
-      this.setState((state) => ({
-        isSaved: !state.isSaved,
-      }));
-    }
   }
 
   // transition to next four
@@ -116,9 +109,23 @@ class App extends React.Component {
     });
   }
 
+  // increment count for stays
+  incrementCount() {
+    this.setState((state) => ({
+      placesCount: state.placesCount + 1,
+    }));
+  }
+
+  // decrement count when clicking red heart
+  decrementCount() {
+    this.setState((state) => ({
+      placesCount: state.placesCount - 1,
+    }));
+  }
+
   render() {
     const {
-      allHouses, isSaved, refs, page,
+      allHouses, refs, page, placesCount,
     } = this.state;
     return (
       <Container className="ContainerApp">
@@ -128,7 +135,7 @@ class App extends React.Component {
           <Arrow direction="left" handleClick={this.prevSlide} />
           <Arrow direction="right" handleClick={this.nextSlide} />
         </Header>
-        {allHouses ? <MoreHouses places={allHouses} saveClick={this.saveClick} refs={refs} isSaved={isSaved} /> : null}
+        {allHouses ? <MoreHouses incrementCount={this.incrementCount} decrementCount={this.decrementCount} places={allHouses} refs={refs} placesCount={placesCount} /> : <h1>Loading</h1>}
       </Container>
     );
   }
