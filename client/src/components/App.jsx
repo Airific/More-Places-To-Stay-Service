@@ -65,7 +65,7 @@ class App extends React.Component {
     const endpoint = window.location.pathname;
     axios.get(`http://localhost:3002/listings/moreplaces${endpoint}`)
       .then((res) => {
-        console.log('res.data[0].houses: ', res.data[0].houses);
+        // console.log('res.data[0].houses: ', res.data[0].houses);
         this.setState({
           allHouses: res.data[0].houses,
           currentSet: res.data[0].houses.slice(0, 4),
@@ -79,13 +79,13 @@ class App extends React.Component {
     let newPage;
     if (this.state.page === 3) {
       newPage = 1;
-      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else if (this.state.page === 2) {
       newPage = 3;
-      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
       newPage = 2;
-      this.state.refs[7].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[7].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     this.setState({
       page: newPage,
@@ -97,13 +97,13 @@ class App extends React.Component {
     let newPage;
     if (this.state.page === 1) {
       newPage = 3;
-      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[11].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else if (this.state.page === 2) {
       newPage = 1;
-      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[0].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
       newPage = 2;
-      this.state.refs[4].current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.state.refs[4].current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     this.setState({
       page: newPage,
