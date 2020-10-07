@@ -123,12 +123,10 @@ const SaveButton = styled.button`
   outline: none !important;
   color: rgb(34, 34, 34) !important;
   cursor: pointer !important;
-  touch-action: manipulation !important;
   position: absolute !important;
   background: transparent;
   font-weight: 600 !important;
   // padding-left: 20px;
-  // transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
   height: 38%;
   width: 94%;
   text-align: left;
