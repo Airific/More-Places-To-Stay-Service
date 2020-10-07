@@ -107,21 +107,35 @@ const CloseButton = styled.button`
   touch-action: manipulation !important;
   position: absolute !important;
   left: 20px;
-  background: transparent !important;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  :hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
+  }
 `;
 const SaveButton = styled.button`
   appearance: none !important;
   display: inline-block !important;
-  border-radius: 50% !important;
+  border-radius: 12px !important;
   border: none !important;
   outline: none !important;
   color: rgb(34, 34, 34) !important;
   cursor: pointer !important;
   touch-action: manipulation !important;
   position: absolute !important;
-  background: transparent !important;
+  background: transparent;
   font-weight: 600 !important;
-  left: 20px;
+  // padding-left: 20px;
+  // transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+  height: 38%;
+  width: 94%;
+  text-align: left;
+  :hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
+  }
 `;
 const AnyTime = styled.div`
 display: inline-block !important;
@@ -167,12 +181,12 @@ const Modal = (props) => {
           Save to a list
         </Top>
         <Middle Middle="Middle">
-          <AnyTime>
-            Any time
-          </AnyTime>
           <SaveButton className="SaveButton" onClick={(event) => { toggleSave(); handleShowModal(event); incrementCount(); }}>
             Vacation spots
           </SaveButton>
+          <AnyTime>
+            Any time
+          </AnyTime>
           <PlacesCount>{placesCount} stays</PlacesCount>
         </Middle>
         <Bottom className="Bottom">Create a list</Bottom>

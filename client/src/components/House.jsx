@@ -18,6 +18,7 @@ const HouseContainer = styled.div`
   position: relative;
   height: 250px;
   border: 1px solid white;
+  border-color: rgb(247, 247, 247);
   border-width: 0 8px;
   width: 240px;
   max-width: 263px;

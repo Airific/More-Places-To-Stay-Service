@@ -1,11 +1,18 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const db = require('../database/index.js');
 
 const app = express();
 const port = 3002;
 
+app.use(cors());
 app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
+// app.use(express.static(path.join(__dirname, '/../client/dist')));
+
+// app.get('/:id', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
+// });
 
 app.get('/listings/moreplaces/:id', (req, res) => {
   const { id } = req.params;
