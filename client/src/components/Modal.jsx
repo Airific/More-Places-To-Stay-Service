@@ -126,10 +126,10 @@ const SaveButton = styled.button`
   position: absolute !important;
   background: transparent;
   font-weight: 600 !important;
-  // padding-left: 20px;
   height: 38%;
-  width: 94%;
-  text-align: left;
+  width: 97%;
+  left: 8px;
+  text-indent: -265px;
   :hover {
     background-color: #F0F0F0;
     cursor: pointer;
@@ -143,8 +143,8 @@ position: relative !important;
 background: transparent !important;
 font-weight: 600 !important;
 top: -26px;
-left: -217px;
-margin-bottom: 4px !important;
+left: -135px;
+// margin-bottom: 4px !important;
 font-size: 12px !important;
 line-height: 16px !important;
 font-weight: 400 !important;
@@ -158,39 +158,60 @@ position: relative !important;
 background: transparent !important;
 font-weight: 600 !important;
 top: 30px;
-left: -264px;
+left: -185px;
 margin-bottom: 4px !important;
 font-size: 12px !important;
 line-height: 16px !important;
 font-weight: 400 !important;
 color: rgb(113, 113, 113) !important;
 `;
-const Modal = (props) => {
-  const {
-    handleShowModal, showModal, toggleSave, placesCount, incrementCount,
-  } = props;
+const Picture = styled.img`
+  display: inline-block !important;
+  position: absolute;
+  height: 72px;
+  width: 72px;
+  border-radius: 5px;
+  left: 20px;
+  z-index: 20;
+  :hover {
+    cursor: pointer;
+  }
+`;
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      createList: false,
+    };
+  }
 
-  return (
-    <OuterContainer className="OuterContainer">
-      <DarkBackground className="DarkBackground" />
-      <ModalContainer className="ModalContainer">
-        <Top className="Top">
-          <CloseButton className="CloseButton" onClick={() => { handleShowModal(); }}>X</CloseButton>
-          Save to a list
-        </Top>
-        <Middle Middle="Middle">
-          <SaveButton className="SaveButton" onClick={(event) => { toggleSave(); handleShowModal(event); incrementCount(); }}>
-            Vacation spots
-          </SaveButton>
-          <AnyTime>
-            Any time
-          </AnyTime>
-          <PlacesCount>{placesCount} stays</PlacesCount>
-        </Middle>
-        <Bottom className="Bottom">Create a list</Bottom>
-      </ModalContainer>
-    </OuterContainer>
-  );
-};
+  render() {
+    const {
+      handleShowModal, showModal, toggleSave, placesCount, incrementCount,
+    } = this.props;
+    return (
+      <OuterContainer className="OuterContainer">
+        <DarkBackground className="DarkBackground" />
+        <ModalContainer className="ModalContainer">
+          <Top className="Top">
+            <CloseButton className="CloseButton" onClick={() => { handleShowModal(); }}>X</CloseButton>
+            Save to a list
+          </Top>
+          <Middle Middle="Middle">
+            <Picture className="ListPicture" src="https://airific-more-places-to-stay-compressed.s3-us-west-1.amazonaws.com/image-small30.jpg" />
+            <SaveButton className="SaveButton" onClick={(event) => { toggleSave(); handleShowModal(event); incrementCount(); }}>
+              Vacation spots
+            </SaveButton>
+            <AnyTime>
+              Any time
+            </AnyTime>
+            <PlacesCount>{placesCount} stays</PlacesCount>
+          </Middle>
+          <Bottom className="Bottom">Create a list</Bottom>
+        </ModalContainer>
+      </OuterContainer>
+    );
+  }
+}
 
 export default Modal;
