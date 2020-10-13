@@ -20,6 +20,7 @@ const Arrow = ({ direction, handleClick }) => {
   transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
   transition: transform ease-in 0.1s;
   box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
+  outline:none;
   &:hover {
     transform: scale(1.1);
   }
