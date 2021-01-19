@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const db = require('../database/index.js');
 
 const app = express();
@@ -15,7 +15,7 @@ app.get('/listings/moreplaces/:id', (req, res) => {
     if (error) {
       res.status(400).send('Something wrong with getting');
     } else {
-      res.status(201).send(results);
+      res.status(200).send(results);
     }
   });
 });
